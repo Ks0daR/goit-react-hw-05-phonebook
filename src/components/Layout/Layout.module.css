@@ -1,0 +1,10 @@
+.Layout {
+  max-width: 100%;
+  margin: auto;
+  height: 100vh;
+}
+
+.LayoutDark {
+  composes: Layout;
+  background-color: #242526;
+}

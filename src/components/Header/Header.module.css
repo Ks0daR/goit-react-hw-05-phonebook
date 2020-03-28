@@ -1,0 +1,39 @@
+.Header {
+  display: flex;
+  width: 100%;
+  background-color: #3c6dcc;
+  justify-content: center;
+}
+
+.Title {
+  color: #fff;
+  text-align: center;
+}
+
+.TitleDark {
+  composes: Header;
+  background-color: darkblue;
+  color: #aaa;
+}
+
+.Button {
+  margin: 10px;
+  text-align: right;
+  border: none;
+  background-color: rgb(104, 104, 233);
+  font-size: 20px;
+  padding: 0 4px;
+  border-radius: 5px;
+  color: aliceblue;
+  cursor: pointer;
+}
+
+.ButtonDark {
+  composes: Button;
+  background-color: aliceblue;
+  color: rgb(104, 104, 233);
+}
+
+.TextDark {
+  color: #aaa;
+}

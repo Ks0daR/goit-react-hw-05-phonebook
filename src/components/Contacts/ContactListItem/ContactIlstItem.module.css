@@ -1,0 +1,28 @@
+.ListElement {
+  display: flex;
+  justify-content: space-between;
+  font-family: sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+.ListElementDark {
+  composes: ListElement;
+  color: #aaa;
+}
+
+.Button {
+  text-align: right;
+  border: none;
+  background-color: rgb(104, 104, 233);
+  font-size: 20px;
+  border-radius: 5px;
+  color: aliceblue;
+  cursor: pointer;
+}
+.ButtonDark {
+  composes: Button;
+  background-color: aliceblue;
+  color: rgb(104, 104, 233);
+}

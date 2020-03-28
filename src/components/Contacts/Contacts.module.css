@@ -1,0 +1,14 @@
+.list {
+  list-style: square;
+  margin: auto;
+  width: 800px;
+}
+
+.Title {
+  text-align: center;
+}
+
+.TitleDark {
+  composes: Title;
+  color: #aaa;
+}
