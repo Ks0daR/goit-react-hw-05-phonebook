@@ -11,7 +11,7 @@ import {
   removeContactError,
 } from './phoneBookActions';
 
-axios.defaults.baseURL = 'http://goit-phonebook-api.herokuapp.com/v1/';
+axios.defaults.baseURL = 'https://goit-phonebook-api.herokuapp.com/v1/';
 axios.defaults.headers.common['Authorization'] =
   'fbe9c05a-6813-409a-a679-7781d523ce31';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
