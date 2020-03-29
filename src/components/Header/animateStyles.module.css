@@ -1,8 +1,8 @@
-.enter {
+.appear {
   opacity: 0;
 }
 
-.enterActive {
+.appearActive {
   opacity: 1;
-  transition: opacity, 500ms, linear;
+  transition: opacity 500ms linear;
 }

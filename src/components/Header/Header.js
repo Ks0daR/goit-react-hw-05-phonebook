@@ -9,11 +9,17 @@ import animateStyles from './animateStyles.module.css';
 
 const Header = ({ theme, onToggle }) => (
   <>
-    <CSSTransition in={true} timeout={500} classNames={animateStyles}>
-      <div className={styles.Header}>
+    <div className={styles.Header}>
+      <CSSTransition
+        in={true}
+        appear
+        timeout={500}
+        classNames={animateStyles}
+        unmountOnExit
+      >
         <h1 className={theme ? styles.Title : styles.TitleDark}>Phone Book</h1>
-      </div>
-    </CSSTransition>
+      </CSSTransition>
+    </div>
     <button
       className={theme ? styles.Button : styles.ButtonDark}
       type="button"

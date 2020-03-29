@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
+import Error from '../Error';
 import { connect } from 'react-redux';
 import { getTheme } from '../../redux/theme/themeSelectors';
 import { getContacts } from '../../redux/phoneBook/phoneBookSelectors';
 import { addContact } from '../../redux/phoneBook/phoneBookOperations';
 import PropTypes from 'prop-types';
-
+import { CSSTransition } from 'react-transition-group';
 import styles from './InputForm.module.css';
+import animatedStyles from './animatedStyles.module.css';
 
 class InputForm extends Component {
   static propTypes = {
@@ -16,6 +18,7 @@ class InputForm extends Component {
   state = {
     name: '',
     number: '',
+    error: false,
   };
 
   getInputValue = ({ target: { name, value } }) => {
@@ -25,23 +28,36 @@ class InputForm extends Component {
   hendleSubmit = e => {
     e.preventDefault();
     if (this.checkedDoubleInput(this.state.name)) {
-      alert(`${this.state.name} есть в книге`);
+      this.setState({ error: true });
       return;
     }
-    this.props.getInfo(this.state);
-    this.setState({ name: '', number: '' });
+    this.props.getInfo(this.state.name, this.state.number);
+    this.setState({ name: '', number: '', error: false });
   };
 
   checkedDoubleInput = name => {
     return this.props.contacts.some(contact => contact.name === name);
   };
 
+  changeValue = () => {
+    this.setState({ error: false });
+  };
+
   render() {
-    const { name, number } = this.state;
+    const { name, number, error } = this.state;
     const { theme } = this.props;
 
     return (
       <>
+        <CSSTransition
+          in={error}
+          timeout={500}
+          classNames={animatedStyles}
+          onEntered={this.changeValue}
+          unmountOnExit
+        >
+          <Error />
+        </CSSTransition>
         <form className={styles.Form} onSubmit={this.hendleSubmit}>
           <label>
             <h3 className={theme ? styles.Title : styles.TitleDark}>Name:</h3>

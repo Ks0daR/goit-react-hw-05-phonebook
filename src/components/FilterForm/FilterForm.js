@@ -6,21 +6,28 @@ import {
   getFilter,
 } from '../../redux/phoneBook/phoneBookSelectors';
 import { changeFilter } from '../../redux/phoneBook/phoneBookActions';
+import { CSSTransition } from 'react-transition-group';
 import styles from './FilterForm.module.css';
+import animatedStyles from './animatedStyles.module.css';
 
 function FilterForm({ filterValue, contacts, onSearchQuery }) {
   if (contacts.length === 1) {
     onSearchQuery();
   }
   return (
-    <label className={styles.search}>
-      {contacts.length > 1 && (
+    <CSSTransition
+      in={contacts.length > 1}
+      timeout={250}
+      classNames={animatedStyles}
+      unmountOnExit
+    >
+      <label className={styles.search}>
         <input
           value={filterValue}
           onChange={e => onSearchQuery(e.target.value)}
         />
-      )}
-    </label>
+      </label>
+    </CSSTransition>
   );
 }
 

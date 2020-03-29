@@ -16,7 +16,7 @@ axios.defaults.headers.common['Authorization'] =
   'fbe9c05a-6813-409a-a679-7781d523ce31';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 
-const addContact = ({ name, number }) => dispatch => {
+const addContact = (name, number) => dispatch => {
   dispatch(addContactRequest());
 
   axios

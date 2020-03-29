@@ -6,26 +6,29 @@ import { getVisibleContacts } from '../../redux/phoneBook/phoneBookSelectors';
 import { changeFilter } from '../../redux/phoneBook/phoneBookActions';
 import { removeContact } from '../../redux/phoneBook/phoneBookOperations';
 import PropTypes from 'prop-types';
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import styles from './Contacts.module.css';
+import animatedStyles from './animatedStyles.module.css';
 
 const Contacts = ({ elements, theme, onRemove }) => {
   return (
     <>
       <h2 className={theme ? styles.Title : styles.TitleDark}>Contacts</h2>
-      <ul className={styles.list}>
+      <TransitionGroup component="ul" className={styles.list}>
         {elements.length > 0
           ? elements.map(({ id, name, number }) => (
-              <ContactListItem
-                key={id}
-                id={id}
-                name={name}
-                number={number}
-                onRemove={() => onRemove(id, elements.length)}
-                theme={theme}
-              />
+              <CSSTransition key={id} timeout={250} classNames={animatedStyles}>
+                <ContactListItem
+                  id={id}
+                  name={name}
+                  number={number}
+                  onRemove={() => onRemove(id, elements.length)}
+                  theme={theme}
+                />
+              </CSSTransition>
             ))
           : null}
-      </ul>
+      </TransitionGroup>
     </>
   );
 };
